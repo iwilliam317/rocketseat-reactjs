@@ -14,6 +14,12 @@ export default class Main extends Component {
     this.setState({products: response.data.docs})
   }
   render(){
-    return (<h1>Contagem de Produtos {this.state.products.length}</h1>)
+    return (
+      <div>
+        <h1>Contagem de Produtos {this.state.products.length}</h1>
+        {this.state.products.map(product =><p> {product.title}</p>)}
+      </div>
+
+      )
   }
 }
