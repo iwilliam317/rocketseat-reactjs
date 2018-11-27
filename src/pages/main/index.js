@@ -17,7 +17,7 @@ export default class Main extends Component {
   }
 
   render(){
-    const [ products ] = this.state;
+    const { products } = this.state;
     return (
       <div>
         <h1>Contagem de Produtos {products.length}</h1>
