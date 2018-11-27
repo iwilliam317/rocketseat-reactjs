@@ -21,7 +21,13 @@ export default class Main extends Component {
     return (
       <div>
         <h1>Contagem de Produtos {products.length}</h1>
-        {products.map(product =><p key={product._id}> {product.title}</p>)}
+        {products.map(product => (
+            <article key={product._id}>
+              <strong>{product.title}</strong>
+              <p>{product.description}</p>
+              <a href="#">Acessar</a>
+            </article>
+          ))}
       </div>
 
       )
