@@ -17,10 +17,11 @@ export default class Main extends Component {
   }
 
   render(){
+    const [ products ] = this.state;
     return (
       <div>
-        <h1>Contagem de Produtos {this.state.products.length}</h1>
-        {this.state.products.map(product =><p key={product._id}> {product.title}</p>)}
+        <h1>Contagem de Produtos {products.length}</h1>
+        {products.map(product =><p key={product._id}> {product.title}</p>)}
       </div>
 
       )
