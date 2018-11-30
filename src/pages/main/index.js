@@ -12,12 +12,18 @@ export default class Main extends Component {
   }
   
   previousPage = () => {
+    const { page, productsInfo } = this.state;
+ 
+    if(page === 1) return;
 
+    const pageNumber = page - 1;
+
+    this.loadProducts(pageNumber)
   }
 
   nextPage = () => {
     const { page, productsInfo } = this.state;
-    console.log(page)
+  
     if(page === productsInfo.pages) return;
 
     const pageNumber = page + 1;
@@ -29,11 +35,11 @@ export default class Main extends Component {
     this.loadProducts();
   }
 
-  loadProducts  = async (page = 1) => {
+  loadProducts  = async (page = 1) => {    
     const response = await api.get(`/products?page=${page}`);
     const { docs, ...productsInfo } = response.data;
 
-    this.setState({products: docs, productsInfo})
+    this.setState({products: docs, productsInfo, page})
   }
 
   render(){
