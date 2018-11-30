@@ -50,7 +50,7 @@ export default class Main extends Component {
               <a href="#">Acessar</a>
             </article>
           ))}
-        <div className="action">
+        <div className="actions">
           <button onClick={this.previousPage}>Previous</button>
           <button onClick={this.nextPage}>Next</button>
         </div>
