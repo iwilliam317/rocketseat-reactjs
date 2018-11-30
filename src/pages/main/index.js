@@ -6,16 +6,34 @@ import './styles.css';
 export default class Main extends Component {
 
   state = {
-    products: []
+    products: [],
+    productsInfo: {},
+    page: 1
   }
   
+  previousPage = () => {
+
+  }
+
+  nextPage = () => {
+    const { page, productsInfo } = this.state;
+    console.log(page)
+    if(page === productsInfo.pages) return;
+
+    const pageNumber = page + 1;
+
+    this.loadProducts(pageNumber)
+  }
+
   componentDidMount(){
     this.loadProducts();
   }
 
-  loadProducts  = async () => {
-    const response = await api.get('/products');
-    this.setState({products: response.data.docs})
+  loadProducts  = async (page = 1) => {
+    const response = await api.get(`/products?page=${page}`);
+    const { docs, ...productsInfo } = response.data;
+
+    this.setState({products: docs, productsInfo})
   }
 
   render(){
@@ -32,6 +50,10 @@ export default class Main extends Component {
               <a href="#">Acessar</a>
             </article>
           ))}
+        <div className="action">
+          <button onClick={this.previousPage}>Previous</button>
+          <button onClick={this.nextPage}>Next</button>
+        </div>
       </div>
 
       )
