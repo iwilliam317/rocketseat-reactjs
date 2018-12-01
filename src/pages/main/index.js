@@ -44,11 +44,12 @@ export default class Main extends Component {
 
   render(){
 
-    const { products } = this.state;
+    const { products, page, productsInfo } = this.state;
     
     return (
+      
       <div className="product-list">
-        <h1>Contagem de Produtos {products.length}</h1>
+
         {products.map(product => (
             <article key={product._id}>
               <strong>{product.title}</strong>
@@ -56,9 +57,10 @@ export default class Main extends Component {
               <a href="#">Acessar</a>
             </article>
           ))}
+
         <div className="actions">
-          <button onClick={this.previousPage}>Previous</button>
-          <button onClick={this.nextPage}>Next</button>
+          <button disabled={page === 1} onClick={this.previousPage}>Previous</button>
+          <button disabled={page === productsInfo.pages } onClick={this.nextPage}>Next</button>
         </div>
       </div>
 

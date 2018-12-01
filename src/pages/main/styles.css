@@ -54,8 +54,14 @@
   color: #FFF;
   font-weight: bold;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .product-list .actions button:hover {
   opacity: 0.7;
+}
+
+.product-list .actions button[disabled] {
+  opacity: 0.3;
+  cursor: default;
 }
